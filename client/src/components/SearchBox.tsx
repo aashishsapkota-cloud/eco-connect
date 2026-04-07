@@ -4,7 +4,7 @@ const SearchBox = () => {
     return (
         <div className='flex items-center gap-2 bg-white px-4  rounded-lg'>
             <Search />
-            <input type="text" placeholder="Search eco businesses..." className="p-4 rounded-lg bg-transparent" />
+            <input type="text" placeholder="Search eco businesses..." className="p-4 rounded-lg border-none" />
         </div>
     )
 }

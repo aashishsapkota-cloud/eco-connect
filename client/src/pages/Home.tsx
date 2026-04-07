@@ -7,7 +7,7 @@ const Home = () => {
         <div className='bg-green-200 min-h-screen'>
             <Hero />
 
-            <div className="flex flex-col items-center justify-center gap-4 p-20">
+            <div className="flex flex-col items-center justify-center gap-4">
                 <h1 className="text-3xl font-bold">Why Choose Eco-connect?</h1>
                 <div className="flex gap-8  mt-7">
                     <Card title="Eco-Friendly " description="Find businesses committed to sustainable practices" logo={Leaf} />
