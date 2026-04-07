@@ -1,9 +1,20 @@
-import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import Header from './components/Header'
+import Listings from './pages/Listings'
+import Profile from './pages/Profile'
+import Login from './pages/Login'
 
 const App = () => {
   return (
     <div>
-      <h1>Eco-connect</h1>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='/listings' element={<Listings />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </div>
   )
 }
