@@ -179,7 +179,7 @@ Ultimately, EcoLife Store is more than just a place to shop—it is a movement t
     ]
     const business = BusinessData.find((business) => business.id === id);
     return (
-        <div className="bg-green-100 p-10 min-h-screen">
+        <div className="bg-[#b6edbc] p-10 min-h-screen">
             <Link to="/listings"
                 className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg w-fit">
                 <ArrowLeft />Back

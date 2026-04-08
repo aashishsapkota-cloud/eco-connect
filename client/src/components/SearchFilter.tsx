@@ -9,17 +9,17 @@ const SearchFilter = () => {
                 <input type="text" placeholder='Search business...' className='border-none rounded-lg w-full px-4 py-2' />
                 <X />
             </div>
-            <select name="category" id="" className='bg-white px-4 py-2 rounded-lg'>
-                <option value="" disabled selected>Category</option>
-                <option value="">Zero Waste</option>
-                <option value="">Local</option>
-                <option value="">Refair Cafes</option>
+            <select name="category" id="" defaultValue={"all"} className='bg-white px-4 py-2 rounded-lg'>
+                <option value="all" disabled >Category</option>
+                <option value="zero-waste">Zero Waste</option>
+                <option value="local">Local</option>
+                <option value="refair-cafes">Refair Cafes</option>
             </select>
-            <select name="sort" id="" className='bg-white px-4 py-2 rounded-lg' >
-                <option value="" disabled selected>Sort by</option>
-                <option value="">Nearest</option>
-                <option value="">Most Reviews</option>
-                <option value="">Highest Rating</option>
+            <select name="sort" id="" defaultValue={"all"} className='bg-white px-4 py-2 rounded-lg' >
+                <option value="all" disabled >Sort by</option>
+                <option value="nearest">Nearest</option>
+                <option value="most-reviews">Most Reviews</option>
+                <option value="highest-rating">Highest Rating</option>
             </select>
             <Button className='flex gap-2' ><Filter />  Reset Filter</Button>
         </div>

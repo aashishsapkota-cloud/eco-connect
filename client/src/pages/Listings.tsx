@@ -103,7 +103,7 @@ const BusinessData = [
 
 const Listings = () => {
     return (
-        <div className="min-h-screen bg-green-100 p-8">
+        <div className="min-h-screen bg-[#b6edbc] p-8">
             <SearchFilter />
             <h1 className="text-3xl font-semibold py-8 mx-2">Eco-Friendly Businesses in Coventry</h1>
             <div className="grid grid-cols-3 gap-6 ">

@@ -4,7 +4,7 @@ import { Heart, Leaf, Users, Verified } from "lucide-react"
 
 const Home = () => {
     return (
-        <div className='bg-green-200 min-h-screen'>
+        <div className='bg-[#b6edbc] min-h-screen'>
 
             <Hero />
 
