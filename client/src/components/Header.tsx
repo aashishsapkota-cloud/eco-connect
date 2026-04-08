@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Button from './Button'
 
 const Header = () => {
     return (
@@ -12,7 +13,7 @@ const Header = () => {
                     <Link to="/"><li className='hover:text-green-600'>Home</li></Link>
                     <Link to="/listings"><li className='hover:text-green-600'>Listings</li></Link>
                     <Link to="/profile"><li className='hover:text-green-600'>Profile</li></Link>
-                    <Link to="/login"><button className='bg-green-600 text-white  rounded-md px-4 py-2 hover:bg-green-700'>Login</button></Link>
+                    <Link to="/login"><Button>Login</Button></Link>
                 </ul>
             </nav>
         </div>

@@ -1,5 +1,6 @@
 import { Star } from "lucide-react"
 import { useState } from "react"
+import Button from "./Button"
 
 const UserReviewInput = () => {
     const [rating, setRating] = useState(0)
@@ -25,9 +26,7 @@ const UserReviewInput = () => {
                     </div>
                     <textarea placeholder="Write your review..." className="border-gray-300 border rounded-lg w-full h-20  p-4 my-2" />
                     <div className="flex justify-end">
-                        <button onClick={() => setSubmit(true)} className="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700">
-                            Submit Review
-                        </button>
+                        <Button onClick={() => setSubmit(true)}>Submit Review</Button>
                     </div>
                 </div>
             )}

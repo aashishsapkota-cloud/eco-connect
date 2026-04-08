@@ -5,6 +5,7 @@ import { Heart, Leaf, Users, Verified } from "lucide-react"
 const Home = () => {
     return (
         <div className='bg-green-200 min-h-screen'>
+
             <Hero />
 
             <div className="flex flex-col items-center justify-center gap-4">

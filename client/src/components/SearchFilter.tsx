@@ -1,4 +1,5 @@
 import { Filter, Search, X } from 'lucide-react'
+import Button from './Button'
 
 const SearchFilter = () => {
     return (
@@ -20,7 +21,7 @@ const SearchFilter = () => {
                 <option value="">Most Reviews</option>
                 <option value="">Highest Rating</option>
             </select>
-            <button className='bg-green-500 text-white px-4 py-2 rounded-lg flex gap-2'><Filter />  Reset Filter</button>
+            <Button className='flex gap-2' ><Filter />  Reset Filter</Button>
         </div>
     )
 }

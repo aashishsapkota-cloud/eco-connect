@@ -1,4 +1,4 @@
-import { ArrowLeft, MapPin, Star, User } from "lucide-react";
+import { ArrowLeft, MapPin, Star } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import BusinessCard from "../components/BusinessCard";
 import UserReviewInput from "../components/UserReviewInput";
@@ -8,6 +8,7 @@ type Comment = {
     user: string
     rating: number
     text: string
+    createdAt?: Date | string
 }
 
 type Business = {
@@ -43,9 +44,9 @@ Ultimately, EcoLife Store is more than just a place to shop—it is a movement t
             tags: ["Zero Waste", "Organic", "Vegan"],
             image: "https://images.unsplash.com/photo-1760863264228-fa0792a2d894?q=80&w=1080",
             comments: [
-                { user: "Alice", rating: 5, text: "Amazing eco-friendly products and very helpful staff!" },
-                { user: "John", rating: 4, text: "Great concept, love the refill system." },
-                { user: "Emma", rating: 5, text: "Best zero-waste store I've visited!" }
+                { user: "Alice", rating: 5, text: "Amazing eco-friendly products and very helpful staff!", createdAt: "2026-01-01" },
+                { user: "John", rating: 4, text: "Great concept, love the refill system.", createdAt: "2026-04-07" },
+                { user: "Emma", rating: 5, text: "Best zero-waste store I've visited!", createdAt: "2026-04-01" }
             ]
         },
         {
@@ -65,9 +66,9 @@ Ultimately, EcoLife Store is more than just a place to shop—it is a movement t
             tags: ["Zero Waste", "Organic", "Vegan"],
             image: "https://images.unsplash.com/photo-1549248581-cf105cd081f8?q=80&w=1080",
             comments: [
-                { user: "Sophia", rating: 5, text: "Fresh produce and great variety!" },
-                { user: "Liam", rating: 4, text: "A bit pricey but quality is top-notch." },
-                { user: "Noah", rating: 5, text: "Love the organic options here." }
+                { user: "Sophia", rating: 5, text: "Fresh produce and great variety!", createdAt: '2022-03-22' },
+                { user: "Liam", rating: 4, text: "A bit pricey but quality is top-notch.", createdAt: '2026-04-07' },
+                { user: "Noah", rating: 5, text: "Love the organic options here.", createdAt: '2026-03-22' }
             ]
         },
         {
@@ -87,8 +88,8 @@ Ultimately, EcoLife Store is more than just a place to shop—it is a movement t
             tags: ["Repair", "Restore", "Recycle"],
             image: "https://images.unsplash.com/photo-1727413430950-ea623d4b2a42?q=80&w=1080",
             comments: [
-                { user: "Oliver", rating: 3, text: "Good service but takes time." },
-                { user: "Mia", rating: 4, text: "Helpful staff and reasonable pricing." }
+                { user: "Oliver", rating: 3, text: "Good service but takes time.", createdAt: "2020-03-22" },
+                { user: "Mia", rating: 4, text: "Helpful staff and reasonable pricing.", createdAt: "2020-03-22" }
             ]
         },
         {
@@ -184,6 +185,8 @@ Ultimately, EcoLife Store is more than just a place to shop—it is a movement t
                 <ArrowLeft />Back
             </Link>
 
+
+            {/* Business Details Section */}
             <div className="mt-10 flex gap-10 bg-white rounded-lg p-10 shadow-lg">
                 <img src={business?.image} alt="" className="h-[500px] w-[500px] object-cover rounded-lg shadow-lg" />
 
@@ -206,6 +209,8 @@ Ultimately, EcoLife Store is more than just a place to shop—it is a movement t
                 </div>
             </div>
 
+
+            {/* Review section */}
             <div className="bg-white shadow-md rounded-xl p-6 mt-6 w-full">
                 <h2 className="text-xl font-bold text-gray-800 mb-2">
                     Review {business?.name}
@@ -213,11 +218,15 @@ Ultimately, EcoLife Store is more than just a place to shop—it is a movement t
                 <p className="text-gray-500 text-sm mb-4">
                     Share your experience with {business?.name}
                 </p>
+
                 <UserReviewInput />
+
+                <h1 className="text-xl font-bold text-gray-800 mb-2">Commments</h1>
                 <CommentsBox comments={business?.comments} />
             </div>
 
 
+            {/* Related Business section */}
             <div className="mt-10">
                 <h1 className="text-2xl  p-4 rounded-lg font-semibold py-4 text-green-700">Related Businesses</h1>
                 <div className="grid grid-cols-3 gap-6 mt-4 ">
