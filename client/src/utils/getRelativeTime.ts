@@ -1,4 +1,4 @@
-export const getRelativeTime = (date: Date) => {
+export const getRelativeTime = (date: Date | string) => {
     const diff = Date.now() - new Date(date).getTime();
     const seconds = Math.floor(diff / 1000);
     const minutes = Math.floor(diff / 60000);

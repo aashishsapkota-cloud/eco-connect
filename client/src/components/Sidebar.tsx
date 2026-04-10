@@ -3,8 +3,6 @@ import { useAuth } from '../auth/AuthContext';
 import {
     LayoutDashboard,
     List,
-    Users,
-    Settings,
     LogOut,
     Leaf,
 } from 'lucide-react';
@@ -12,9 +10,7 @@ import Button from './Button';
 
 const navItems = [
     { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard, end: true },
-    { label: 'Listings', path: '/dashboard/listings', icon: List },
-    { label: 'Users', path: '/dashboard/users', icon: Users },
-    { label: 'Settings', path: '/dashboard/settings', icon: Settings },
+    { label: 'Businesses', path: '/businesses', icon: List }
 ];
 
 export default function Sidebar() {
@@ -27,12 +23,12 @@ export default function Sidebar() {
     };
 
     return (
-        <aside className="flex flex-col h-screen w-60 bg-green-800 text-white flex-shrink-0">
+        <aside className="flex flex-col h-screen w-60 bg-green-800 text-white flex-shrink-0 shadow-2xl ">
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 px-4 py-4 border-b border-green-700">
                 <Leaf size={20} className="text-green-300" />
-                <span className="font-bold text-lg tracking-tight">EcoConnect</span>
+                <span className="font-bold text-lg ">EcoConnect</span>
             </Link  >
 
             {/* Nav links */}
@@ -43,8 +39,8 @@ export default function Sidebar() {
                         to={path}
                         end={end}
                         className={({ isActive }) => `
-                            flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
-                            transition-colors duration-150 no-underline
+                            flex items-center gap-3 p-3 rounded-lg text-sm font-medium
+                            transition-colors duration-150
                             ${isActive
                                 ? 'bg-green-600 text-white'
                                 : 'text-green-200 hover:bg-green-700 hover:text-white'

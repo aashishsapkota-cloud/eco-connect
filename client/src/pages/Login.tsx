@@ -8,8 +8,12 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const { login } = useAuth();
+    const { login, user } = useAuth();
     const navigate = useNavigate();
+
+    if (user) {
+        navigate('/');
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();

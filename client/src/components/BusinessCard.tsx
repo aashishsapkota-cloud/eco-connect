@@ -3,14 +3,14 @@ const BusinessCard = ({
     imageUrl,
     name,
     location,
-    tags,
+    category,
     rating,
 
 }: {
     imageUrl: string;
     name: string;
     location: string;
-    tags: string[];
+    category: string;
     rating: number;
 }) => {
     return (
@@ -25,12 +25,10 @@ const BusinessCard = ({
                         <>
                             <Star key={index} fill="#FFD700" stroke="#FFD700" size={18} />
                         </>
-                    ))} {rating}</p>
+                    ))} {rating > 0 ? rating : null}</p>
                 <p className="flex gap-2 items-center text-md text-gray-600"><MapPin size={18} />{location}</p>
                 <div className="flex gap-2 pt-2">
-                    {tags.map((tag, index) => (
-                        <span key={index} className="bg-green-500 text-white px-2 py-1 rounded-full text-sm">{tag}</span>
-                    ))}
+                    <span className="bg-green-500 text-white px-2 py-1 rounded-full text-sm">{category}</span>
                 </div>
             </div>
         </div>
