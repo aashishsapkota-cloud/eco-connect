@@ -8,7 +8,7 @@ export default function Register() {
     const [email, setEmail] = useState('');
 
     // called by RegisterForm once signup succeeds
-    const handleRegistered = (userEmail) => {
+    const handleRegistered = (userEmail: string) => {
         setEmail(userEmail);
         setStep('otp');
     };

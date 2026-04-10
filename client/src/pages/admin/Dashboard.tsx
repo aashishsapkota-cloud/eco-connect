@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function Dashboard() {
     const { user } = useAuth();
-    const [loading, setLoading] = useState<Boolean>(true);
+    const [loading, setLoading] = useState<boolean>(true);
     const [data, setData] = useState({
         totalBusinesses: 0,
         totalUsers: 0,

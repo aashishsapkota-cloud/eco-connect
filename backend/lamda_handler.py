@@ -118,6 +118,8 @@ def get_dashboard_data(claims):
 
 # ------------------ Business CRUD ------------------
 
+
+# ------------------ Get All Businesses ------------------
 def get_all_businesses(event):
 
     params = event.get("queryStringParameters") or {}
@@ -138,6 +140,7 @@ def get_all_businesses(event):
     })
 
 
+# ------------------ Get Business by ID ------------------
 def get_business(business_id):
     res = BUSINESS_TABLE.get_item(Key={"businessId": business_id})
     item = res.get("Item")
@@ -148,6 +151,7 @@ def get_business(business_id):
     return response(200, {"business": item})
 
 
+# ------------------ Create Business ------------------
 def create_business(event, claims):
     if not is_superadmin(claims):
         return response(403, {"error": "Only superadmin can create businesses"})
@@ -188,6 +192,7 @@ def create_business(event, claims):
     return response(201, {"message": "Business created", "business": item})
 
 
+# ------------------ Update Business ------------------
 def update_business(event, claims, business_id):
     if not is_superadmin(claims):
         return response(403, {"error": "Only superadmin can update businesses"})
@@ -229,6 +234,7 @@ def update_business(event, claims, business_id):
     return response(200, {"message": "Business updated"})
 
 
+# ------------------ Delete Business ------------------
 def delete_business(claims, business_id):
     if not is_superadmin(claims):
         return response(403, {"error": "Only superadmin can delete businesses"})
@@ -246,13 +252,16 @@ def delete_business(claims, business_id):
     return response(200, {"message": "Business deleted"})
 
 
-# ------------------ Reviews ------------------
+# ------------------ Reviews CRUD ------------------
 
+
+# ------------------ Get Reviews ------------------
 def get_reviews(business_id):
     reviews = query_all(REVIEW_TABLE, Key("businessId").eq(business_id))
     return response(200, {"reviews": reviews})
 
 
+# ------------------ Update Review Stats ------------------
 def update_review_stats(business_id, rating):
     BUSINESS_TABLE.update_item(
         Key={"businessId": business_id},
@@ -265,7 +274,7 @@ def update_review_stats(business_id, rating):
     )
 
 
-
+# ------------------ Create Review ------------------
 def add_review(event, claims, business_id):
     if not claims:
         return response(401, {"error": "Unauthorized"})
@@ -317,6 +326,7 @@ def add_review(event, claims, business_id):
     return response(201, {"message": "Review added", "review": review_item})
 
 
+# ------------------ Update Review ------------------
 def update_review(event, claims, business_id):
     if not claims:
         return response(401, {"error": "Unauthorized"})
@@ -385,6 +395,8 @@ def update_review(event, claims, business_id):
 
     return response(200, {"message": "Review updated"})
 
+
+# ------------------ Delete Review ------------------
 def delete_review(claims, business_id):
     if not claims:
         return response(401, {"error": "Unauthorized"})
@@ -421,6 +433,8 @@ def delete_review(claims, business_id):
 
     return response(200, {"message": "Review deleted"})
 
+
+# ------------------ Delete Review by Admin ------------------
 def delete_review_by_admin(claims, business_id, target_user_id):
     if not claims:
         return response(401, {"error": "Unauthorized"})
@@ -463,14 +477,14 @@ def lambda_handler(event, context):
 
     logger.info(f"Request: {method} {path}")
 
-    # CORS preflight
+# ------------ CORS preflight ---------------------------
     if method == "OPTIONS":
         return response(200, {})
 
     path_params = event.get("pathParameters") or {}
     business_id = path_params.get("id")
 
-    # Businesses Routing
+# ------------ Businesses Routing -------------------------
     if path == "/businesses" and method == "GET":
         return get_all_businesses(event)
 
@@ -486,7 +500,7 @@ def lambda_handler(event, context):
     if path == "/businesses/{id}" and method == "DELETE":
         return delete_business(claims, business_id)
 
-    # Reviews Routing
+#------------------- Reviews Routing ------------------------
     if path == "/businesses/{id}/reviews" and method == "GET":
         return get_reviews(business_id)
 

@@ -14,7 +14,7 @@ const OtpForm = ({ email, onVerified }: OtpFormProps) => {
     const [verifying, setVerifying] = useState(false);
     const [verified, setVerified] = useState(false);
     const [cooldown, setCooldown] = useState(30);
-    const otpRefs = useRef([]);
+    const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
 
     const { confirmOtp, resendOtp } = useAuth();
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ const OtpForm = ({ email, onVerified }: OtpFormProps) => {
         return () => clearTimeout(id);
     }, [cooldown]);
 
-    const onInput = (idx, val) => {
+    const onInput = (idx: number, val: string) => {
         if (!/^\d*$/.test(val)) return;
         const updated = [...otp];
         updated[idx] = val.slice(-1);
@@ -34,13 +34,13 @@ const OtpForm = ({ email, onVerified }: OtpFormProps) => {
         if (val && idx < 5) otpRefs.current[idx + 1]?.focus();
     };
 
-    const onKeyDown = (idx, e) => {
+    const onKeyDown = (idx: number, e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Backspace' && !otp[idx] && idx > 0) {
             otpRefs.current[idx - 1]?.focus();
         }
     };
 
-    const onPaste = (e) => {
+    const onPaste = (e: React.ClipboardEvent) => {
         e.preventDefault();
         const text = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6);
         const updated = otp.map((_, i) => text[i] || '');
@@ -48,7 +48,7 @@ const OtpForm = ({ email, onVerified }: OtpFormProps) => {
         otpRefs.current[Math.min(text.length, 5)]?.focus();
     };
 
-    const handleVerify = async (e) => {
+    const handleVerify = async (e: React.FormEvent) => {
         e.preventDefault();
         const code = otp.join('');
         if (code.length < 6) {
@@ -62,7 +62,7 @@ const OtpForm = ({ email, onVerified }: OtpFormProps) => {
             setVerified(true);
             onVerified?.();
             setTimeout(() => navigate('/login'), 2000);
-        } catch (err) {
+        } catch (err: any) {
             setError(err.message || 'Invalid code, try again');
         } finally {
             setVerifying(false);
@@ -75,7 +75,7 @@ const OtpForm = ({ email, onVerified }: OtpFormProps) => {
             await resendOtp(email);
             setCooldown(30);
             setError('');
-        } catch (err) {
+        } catch (err: any) {
             setError(err.message || 'Could not resend code');
         }
     };

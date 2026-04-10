@@ -1,6 +1,4 @@
-import Card from "../components/Card"
 import Hero from "../components/Hero"
-import { Heart, Leaf, Users, Verified } from "lucide-react"
 
 const Home = () => {
     return (

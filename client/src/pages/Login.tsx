@@ -15,14 +15,14 @@ export default function Login() {
         navigate('/');
     }
 
-    async function handleSubmit(e) {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         setError('');
         setLoading(true);
         try {
             const redirectTo = await login(email, password);
             navigate(redirectTo);
-        } catch (err) {
+        } catch (err: any) {
             if (err.name === 'UserNotConfirmedException') {
                 setError('Please verify your email before signing in.');
             } else if (err.name === 'NotAuthorizedException') {

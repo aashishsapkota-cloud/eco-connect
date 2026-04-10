@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import Button from './Button';
 
-const RegisterForm = ({ onSuccess }) => {
+const RegisterForm = ({ onSuccess }: { onSuccess: (email: string) => void }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,14 +12,14 @@ const RegisterForm = ({ onSuccess }) => {
 
     const { register } = useAuth();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
         setLoading(true);
         try {
             await register(email, password, name);
             onSuccess(email);
-        } catch (err) {
+        } catch (err: any) {
             setError(err.message || 'Registration failed');
         } finally {
             setLoading(false);

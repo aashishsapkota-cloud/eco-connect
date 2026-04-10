@@ -14,7 +14,7 @@ async function getHeaders() {
     };
 }
 
-async function handleResponse(res) {
+async function handleResponse(res: Response) {
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || "Request failed");
     return data;
@@ -26,7 +26,7 @@ export async function getAllBusinesses() {
     return handleResponse(res);
 }
 
-export async function getBusiness(id) {
+export async function getBusiness(id: string | undefined) {
     const res = await fetch(`${API_URL}/businesses/${id}`);
     return handleResponse(res);
 }
@@ -41,7 +41,7 @@ export async function getDashboardData() {
     return handleResponse(res);
 }
 
-export async function createBusiness(data) {
+export async function createBusiness(data: any) {
     const res = await fetch(`${API_URL}/businesses`, {
         method: "POST",
         headers: await getHeaders(),
@@ -50,7 +50,7 @@ export async function createBusiness(data) {
     return handleResponse(res);
 }
 
-export async function updateBusiness(id, data) {
+export async function updateBusiness(id: string, data: any) {
     const res = await fetch(`${API_URL}/businesses/${id}`, {
         method: "PUT",
         headers: await getHeaders(),
@@ -59,7 +59,7 @@ export async function updateBusiness(id, data) {
     return handleResponse(res);
 }
 
-export async function deleteBusiness(id) {
+export async function deleteBusiness(id: string) {
     const res = await fetch(`${API_URL}/businesses/${id}`, {
         method: "DELETE",
         headers: await getHeaders(),
@@ -68,7 +68,7 @@ export async function deleteBusiness(id) {
 }
 
 // Logged in users only
-export async function addReview(businessId, rating, comment) {
+export async function addReview(businessId: string, rating: number, comment: string) {
     const res = await fetch(`${API_URL}/businesses/${businessId}/reviews`, {
         method: "POST",
         headers: await getHeaders(),
@@ -77,7 +77,7 @@ export async function addReview(businessId, rating, comment) {
     return handleResponse(res);
 }
 
-export async function getAllReviews(businessId) {
+export async function getAllReviews(businessId: string | undefined) {
     const res = await fetch(`${API_URL}/businesses/${businessId}/reviews`, {
         method: "GET",
         headers: await getHeaders(),

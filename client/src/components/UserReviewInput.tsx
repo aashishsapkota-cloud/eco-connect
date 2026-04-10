@@ -11,8 +11,8 @@ const UserReviewInput = ({
     setSubmit
 }: {
     businessId: string,
-    submit: Boolean,
-    setSubmit: React.Dispatch<React.SetStateAction<Boolean>>
+    submit: boolean,
+    setSubmit: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
     const [rating, setRating] = useState(0)
     const [comment, setComment] = useState("")

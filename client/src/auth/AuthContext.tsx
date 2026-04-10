@@ -10,10 +10,28 @@ import {
     fetchUserAttributes,
 } from 'aws-amplify/auth';
 
-const AuthContext = createContext(null);
+interface AuthUser {
+    userId: string;
+    username: string;
+    name: string;
+    email: string;
+    isSuperAdmin: boolean;
+}
 
-export function AuthProvider({ children }) {
-    const [user, setUser] = useState(null);
+interface AuthContextType {
+    user: AuthUser | null;
+    loading: boolean;
+    login: (email: string, password: string) => Promise<string>;
+    logout: () => Promise<void>;
+    register: (email: string, password: string, name: string) => Promise<void>;
+    confirmOtp: (email: string, code: string) => Promise<void>;
+    resendOtp: (email: string) => Promise<void>;
+}
+
+const AuthContext = createContext<AuthContextType | null>(null);
+
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+    const [user, setUser] = useState<AuthUser | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
