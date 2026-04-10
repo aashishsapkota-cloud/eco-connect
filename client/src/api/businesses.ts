@@ -27,7 +27,14 @@ export async function getAllBusinesses() {
 }
 
 export async function getBusiness(id: string | undefined) {
+    if (!id) return { business: null };
     const res = await fetch(`${API_URL}/businesses/${id}`);
+    return handleResponse(res);
+}
+
+export async function getAllReviews(businessId: string | undefined) {
+    if (!businessId) return { reviews: [] };
+    const res = await fetch(`${API_URL}/businesses/${businessId}/reviews`);
     return handleResponse(res);
 }
 
@@ -77,13 +84,7 @@ export async function addReview(businessId: string, rating: number, comment: str
     return handleResponse(res);
 }
 
-export async function getAllReviews(businessId: string | undefined) {
-    const res = await fetch(`${API_URL}/businesses/${businessId}/reviews`, {
-        method: "GET",
-        headers: await getHeaders(),
-    });
-    return handleResponse(res);
-}
+// Managed in public section
 
 export async function updateReview(businessId: string, rating: number, comment: string) {
     const res = await fetch(`${API_URL}/businesses/${businessId}/reviews`, {
