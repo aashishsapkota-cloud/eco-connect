@@ -11,7 +11,7 @@ const Header = () => {
         <div className="flex items-center justify-between px-10 py-4 sticky top-0 bg-white  shadow-md">
             <h1 className="text-2xl font-semibold flex gap-2 items-center">
                 <img src={logo} className='h-20 w-20' alt="logo" />
-                Converty <span className="text-green-700">EcoConnect</span>
+                Coventry <span className="text-green-700">EcoConnect</span>
             </h1>
             <nav>
                 <ul className="flex items-center gap-6 cursor-pointer ">
