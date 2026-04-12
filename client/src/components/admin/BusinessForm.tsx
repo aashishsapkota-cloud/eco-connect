@@ -33,13 +33,10 @@ const BusinessForm = ({ initialData, onSubmit, loading, title, buttonText }: Bus
 
     const categories = [
         "Zero Waste",
-        "Organic",
+        "Local Food",
         "Repair",
-        "Vegan",
-        "Thrift",
-        "Refill",
-        "Home",
-        "Lifestyle"
+        "Local",
+        "Resuse Store"
     ]
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

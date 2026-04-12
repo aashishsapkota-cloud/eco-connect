@@ -43,7 +43,7 @@ const Listings = () => {
             <TitleHeader title="Eco-Friendly Businesses in Coventry" className="py-8" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredBusinesses.length > 0 ? (
-                    filteredBusinesses.map((business) => {
+                    filteredBusinesses.sort((b, a) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map((business) => {
                         const rating = business.totalReviews > 0 && (business.ratingSum / business.totalReviews).toFixed(1)
                         return (
                             <Link key={business.businessId} to={`/listings/${business.businessId}`}>

@@ -1,3 +1,5 @@
+#----------- Aashish Sapkota | SID: 16548699 -----------
+#----eco-connect backend - lambda handler----
 import json
 import logging
 import boto3
@@ -518,6 +520,7 @@ def lambda_handler(event, context):
     if path == "/businesses/{id}/reviews/{userId}" and method == "DELETE":
         return delete_review_by_admin(claims, business_id, userId)
 
+#------------------- Dashboard Stat Routing ------------------------
     if path == "/dashboard" and method == "GET":
         return get_dashboard_data(claims)
     

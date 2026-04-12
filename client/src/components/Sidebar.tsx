@@ -4,9 +4,9 @@ import {
     LayoutDashboard,
     List,
     LogOut,
-    Leaf,
 } from 'lucide-react';
 import Button from './Button';
+import logo from '../assets/ecologo.jpeg'
 
 const navItems = [
     { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard, end: true },
@@ -27,8 +27,8 @@ export default function Sidebar() {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 px-4 py-4 border-b border-green-700">
-                <Leaf size={20} className="text-green-300" />
-                <span className="font-bold text-lg ">EcoConnect</span>
+                <img src={logo} className='h-16 w-16' alt="logo" />
+                <span className="font-bold text-lg ">EcoConnect Admin Panel</span>
             </Link  >
 
             {/* Nav links */}
@@ -62,8 +62,8 @@ export default function Sidebar() {
 
                 <Button
                     onClick={handleLogout}
-                    className="flex items-center gap-2.5 w-full px-3 py-2.5 bg-transparent
-                               text-red-300 hover:bg-red-500 hover:text-white border-0"
+                    className="flex items-center gap-2 w-full px-3 py-2.5 bg-transparent
+                               text-red-300 hover:bg-red-500 hover:text-white"
                 >
                     <LogOut size={18} className="flex-shrink-0" />
                     <span>Sign out</span>

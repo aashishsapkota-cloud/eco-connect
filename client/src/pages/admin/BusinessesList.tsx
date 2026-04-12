@@ -80,7 +80,7 @@ const BusinessesList = () => {
                                     </td>
                                 </tr>
                             ) : (
-                                businesses.map((business) => {
+                                businesses.sort((b, a) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).map((business) => {
                                     const ratingSum = Number(business.ratingSum || 0);
                                     const totalReviews = Number(business.totalReviews || 0);
                                     const avgRating = totalReviews > 0 ? (ratingSum / totalReviews).toFixed(1) : "—";

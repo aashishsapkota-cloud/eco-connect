@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Button from './Button'
 import { useAuth } from '../auth/AuthContext'
 import { LayoutDashboard, User } from 'lucide-react';
+import logo from '../assets/ecologo.jpeg'
 
 const Header = () => {
     const { user } = useAuth();
@@ -9,7 +10,7 @@ const Header = () => {
     return (
         <div className="flex items-center justify-between px-10 py-4 sticky top-0 bg-white  shadow-md">
             <h1 className="text-2xl font-semibold flex gap-2 items-center">
-                <img src="https://img.freepik.com/free-vector/leaf-spring-icon_24911-115668.jpg?w=360" className='h-10 w-10' alt="logo" />
+                <img src={logo} className='h-20 w-20' alt="logo" />
                 Converty <span className="text-green-700">EcoConnect</span>
             </h1>
             <nav>
