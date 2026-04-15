@@ -34,9 +34,7 @@ const BusinessForm = ({ initialData, onSubmit, loading, title, buttonText }: Bus
     const categories = [
         "Zero Waste",
         "Local Food",
-        "Repair",
-        "Local",
-        "Resuse Store"
+        "Repair Cafes",
     ]
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
